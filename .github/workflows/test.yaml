@@ -1,0 +1,28 @@
+name: Test
+on:
+  pull_request:
+    branches: ["*"]
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    name: Test Update Script
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-13, macos-latest]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Run Test
+        run: |
+          set -x # Enable Execution Logs
+          zsh install.sh || { echo "The script exited with an error."; exit 1; }
+          echo "The script executed successfully."
+          ZSHRC_PATH="${HOME}/.zshrc"
+          if ! awk '/^update\(\) {/,/^}/' "${ZSHRC_PATH}" | grep -q 'curl'; then
+            echo "Error: Test Failed!!!"
+            exit 1
+          fi
+          echo "TEST PASSED"

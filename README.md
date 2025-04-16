@@ -1,51 +1,48 @@
-# All-In-One Mac Update script 🍎
+# All-In-One Mac Update Script 🍎🖥️
+
+[![Dependabot Updates](https://github.com/andmpel/MacOS-All-In-One-Update-Script/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/andmpel/MacOS-All-In-One-Update-Script/actions/workflows/dependabot/dependabot-updates)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/andmpel/MacOS-All-In-One-Update-Script/master.svg)](https://results.pre-commit.ci/latest/github/andmpel/MacOS-All-In-One-Update-Script/master)
+[![Test](https://github.com/andmpel/MacOS-All-In-One-Update-Script/actions/workflows/test.yaml/badge.svg)](https://github.com/andmpel/MacOS-All-In-One-Update-Script/actions/workflows/test.yaml)
+
 
 > Inspired by the article
-[Keeping macOS clean](https://medium.com/@waxzce/keeping-macos-clean-this-is-my-osx-brew-update-cli-command-6c8f12dc1731).
+[Keeping MacOS Clean](https://waxzce.medium.com/keeping-macos-clean-this-is-my-osx-brew-update-cli-command-6c8f12dc1731).
 
-This is a zsh Mac update script that updates all software I could find to be updated via Terminal on macOS.
+This Zsh script simplifies the process of updating all your macOS software directly from the Terminal. While it covers many updates, you may want to install [`mas`](https://github.com/mas-cli/mas) to manage App Store applications.
 
-Missing commands are not updated, but you might want
-to install [`mas`](https://github.com/mas-cli/mas) to update applications from Appstore.
+## Getting Started
 
-## Run
+### Install Script as Alias for Repeat Use
 
-To execute just run:
-
-```sh
-zsh update-all.sh
-```
-
-To source and then use individual update-* functions first
-comment out the command at the bottom of the file and run:
+To Download & Execute, Run the following command in your terminal:
 
 ```sh
-source ./update-all.sh
+curl -fsSL https://raw.githubusercontent.com/andmpel/MacOS-All-In-One-Update-Script/HEAD/install.sh | zsh
 ```
 
-If you want to use this command often copy it to directory that you
-have in PATH variable (check with `echo $PATH`) like this:
+### Manually Configuring Alias for Repeat Use
+
+For easy access, copy the `update-all.sh` script to a directory included in your `PATH`. Here’s how:
 
 ```sh
-USER_SCRIPTS="${HOME}/.local/bin"  # change this
-cp ./update-all.sh $USER_SCRIPTS/update-all
-chmod +x $USER_SCRIPTS/update-all
+USER_SCRIPTS="${HOME}/.local/bin"  # Modify as needed
+cp ./update-all.sh $USER_SCRIPTS/update
+chmod +x $USER_SCRIPTS/update
 ```
 
-and now you can call the script any time :)
+**Now you can run the script anytime by simply typing `update` in your terminal.**
 
+## Supported Updates
 
-## Updates
+This script currently updates the following:
 
-Currently including:
+- 🍺 **Homebrew** formulas and casks (`brew`)
+- 🧑‍💻 **VSCode** extensions (`code`)
+- 📦 **Node Package Manager** packages (`npm`)
+- 💎 **RubyGems** (`gem`)
+- 🧶 **Yarn** packages (`yarn`)
+- 🚚 **Rust** packages (`cargo`)
+- 🔵 **App Store** applications (`mas`)
+- 🖥  **MacOS** system updates and patches (`softwareupdate`)
 
-- 🍺 Homebrew formula's and casks (`brew`)
-- ⚛️ Atom (`apm`)
-- 📦 Node Package Manager (`npm`)
-- 💎 RubyGems (`gem`)
-- 🧶 Yarn (`yarn`)
-- 🐍 Python 2.7 and 3 (`pip`)
-- 🔵 Applications in the Appstore (`mas`)
-- 📚 Microsoft Office (`msupdate`)
-- 🖥 MacOS Operating System Updates/Patches (`softwareupdate`)
-
+Feel free to contribute or customize the script to suit your needs! Happy updating! 🎉
